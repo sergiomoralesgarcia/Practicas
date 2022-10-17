@@ -73,37 +73,34 @@ namespace Practicas
         #region Practica 3 comprobar si S/N está bien introducido
         static void Practica3()
         {
-            const int PUEDE_CONDUCIR = 18;
-            const string TIENE_CARNET = "S";
-            
-            string carnet = Console.ReadLine().ToUpper();
-
-            Console.WriteLine("Vamos a evaluar si puedes conducir");
-            Console.WriteLine("Introduce tu edad:");
-            int edad = Int32.Parse(Console.ReadLine());
-
-            if (edad >= 18)
+            const string loop = "S";
+            string ans = string.Empty;
+            while (!String.Equals(ans,"S"))
             {
-                Console.WriteLine("¿Tienes carnet?(S/N)");
-                carnet = Console.ReadLine().ToUpper();
-
-                while (String.Equals(carnet, TIENE_CARNET))
+                Console.WriteLine("Tienes carnet de conducir?(S/N)");
+                ans = Console.ReadLine().ToUpper();
+                switch (ans)
                 {
-                    if (carnet == TIENE_CARNET)
-                    {
-                        Console.WriteLine("Puedes conducir");
-                    }
-                    else
-                    {
+                    case "S":
+                        while (String.Equals(ans, loop))
+                        {
+                            Console.WriteLine("Puedes conducir");
+
+                            ans = Console.ReadLine().ToUpper();
+                        }
+                        break;
+                    case "N":
                         Console.WriteLine("No puedes conducir");
-                    }
+                        ans = Console.ReadLine().ToUpper();
+
+                        break;
+                    default:
+                        Console.WriteLine("Se debe introducir N o S");
+                        break;
                 }
-                Console.WriteLine("Se debe introducir N o S");
             }
-            else
-            {
-                Console.WriteLine("No puedes conducir");
-            }
+            Console.WriteLine("Puedes conducir");
+
         }
         #endregion
     }
